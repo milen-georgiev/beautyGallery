@@ -1,0 +1,143 @@
+body {
+    background-image: url("/images/backgraund.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* stilizaciq na menu */
+
+nav div ul li a {
+    color: chartreuse;
+
+}
+
+
+
+/* stilizaciq na footer */
+footer {
+    background-color: black;
+    width: 100%;
+}
+
+footer h2 {
+    color:  #e502f4 ;
+}
+
+/* login and registratio form */
+
+
+.login-form {
+    box-sizing: border-box;
+    font-family: 'Times New Roman';
+    max-width: 350px;
+    margin:30px auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    grid-template-areas:
+    'login-form-logo'
+    'login-box';
+}
+
+.login-form-logo {
+    padding: 40px;
+    background:   #adf7c980;
+}
+.login-logo {
+    display: block;
+    max-width: 125px;
+    margin: 0 auto;
+}
+
+.login-box{
+    padding: 30px;
+    background: #eeeeee;
+}
+
+.login-detail {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333333;
+    display: -moz-flex;
+}
+
+.forgot-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-form-button {
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #009578;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* login and registratio form */
+
+
+.login-form {
+    box-sizing: border-box;
+    font-family: 'Times New Roman';
+    max-width: 350px;
+    margin:30px auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    grid-template-areas:
+    'login-form-logo'
+    'login-box';
+}
+
+.login-form-logo {
+    padding: 40px;
+    background:   #adf7c980;
+}
+.login-logo {
+    display: block;
+    max-width: 125px;
+    margin: 0 auto;
+}
+
+.login-box{
+    padding: 30px;
+    background: #eeeeee;
+}
+
+.login-detail {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333333;
+    display: flexbox;
+}
+
+.forgot-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-form-button {
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #009578;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
