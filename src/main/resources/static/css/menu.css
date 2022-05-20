@@ -8,9 +8,6 @@ header {
     height: 50px;
     display: flex;
     justify-content: space-between;
-/* фиксирано меню */
-    position: fixed;
-    width: 100%;
 }
 
 #brand {
@@ -115,7 +112,7 @@ ul li:hover {
     background-color: #f4cbb7;
     top: 50px;
     left: 0;
-    height: calc(100vh - 50px);
+    height: 300px;
     width: 100%;
 }
 

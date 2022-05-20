@@ -17,19 +17,19 @@
     <div id="brand"><a href="/">Mimsit</a></div>
     <nav>
         <ul>
-            <li><a href="">Начало</a></li>
-            <li><a href="">Бабини таини</a></li>
-            <li><a href="">Галерия</a></li>
+            <li><a href="/">Начало</a></li>
+            <li><a th:href="@{/resources/grandmother}">Бабини таини</a></li>
+            <li><a th:href="@{/resources/gallery}">Галерия</a></li>
             <!-- <li><a th:href="@{/resources/hairstyles}">Прически</a></li>
             <li><a th:href="@{/resources/manicure}">Маникюр</a></li>
             <li><a th:href="@{/resources/makeup}">Грим</a></li>
             <li><a th:href="@{/resources/video}">Клипове</a></li>
             <li><a href="">Добави</a></li> -->
-            <li><a href="">За нас</a></li>
-            <li id="login"><a href="">Вход</a></li>
-            <li id="signup"><a href="">Регистрация</a></li>
-            <li id="admin"><a href="">Админ панел</a></li>
-            <li id="profile"><a href="">Профил</a></li>
+            <li><a th:href="@{/about}">За нас</a></li>
+            <li id="login" sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}">Вход</a></li>
+            <li id="signup" sec:authorize="!isAuthenticated()"><a th:href="@{/users/register}">Регистрация</a></li>
+            <li id="admin" sec:authorize="hasRole('ADMIN')"><a href="">Админ панел</a></li>
+            <li id="profile" sec:authorize="isAuthenticated()"><a href="">Профил</a></li>
         </ul>
     </nav>
     <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
@@ -37,26 +37,26 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
         <ul class="mobile-menu">
-            <li><a href="">Начало</a></li>
-            <li><a href="">Бабини таини</a></li>
-            <li><a href="">Галерия</a></li>
+            <li><a href="/">Начало</a></li>
+            <li><a th:href="@{/resources/grandmother}">Бабини таини</a></li>
+            <li><a th:href="@{/resources/gallery}">Галерия</a></li>
             <!-- <li><a th:href="@{/resources/hairstyles}">Прически</a></li>
             <li><a th:href="@{/resources/manicure}">Маникюр</a></li>
             <li><a th:href="@{/resources/makeup}">Грим</a></li>
             <li><a th:href="@{/resources/video}">Клипове</a></li>
             <li><a href="">Добави</a></li> -->
-            <li><a href="">За нас</a></li>
-            <li id="login"><a href="">Вход</a></li>
-            <li id="signup"><a href="">Регистрация</a></li>
-            <li id="admin"><a href="">Админ панел</a></li>
-            <li id="profile"><a href="">Профил</a></li>
+            <li><a th:href="@{/about}">За нас</a></li>
+            <li id="login" sec:authorize="!isAuthenticated()"><a th:href="@{/users/login}">Вход</a></li>
+            <li id="signup" sec:authorize="!isAuthenticated()"><a th:href="@{/users/register}">Регистрация</a></li>
+            <li id="admin" sec:authorize="hasRole('ADMIN')"><a href="">Админ панел</a></li>
+            <li id="profile" sec:authorize="isAuthenticated()"><a href="">Профил</a></li>
         </ul>
     </div>
 </header>
 
 <footer th:fragment="footer">
 
+    <script src="/js/menu.js"></script>
 </footer>
-
 </body>
 </html>

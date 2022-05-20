@@ -9,52 +9,68 @@
 <header th:replace="fragments/commons::navigation"></header>
 
 
-<section>
-
-
-    <form class="login-form"
+<section id="loginPage">
+    <form class="loginForm"
           th:action="@{/users/login}"
           th:method="POST">
-        <div class="login-form-logo">
-            <img class="login-logo" src="/images/login.png" alt="Logo">
-        </div>
-        <div class="login-box">
-            <div class="login-detail h2">Логин</div>
+                <img src="/images/login.png" alt="logo" />
+                <h2>Вход</h2>
 
-            <div class="login-detail">
-                <img src="/images/username-icon.png" alt="username">
-            </div>
+                <div>
+                    <label for="username">Потребителско име:</label>
+                    <input id="username" name="username" type="text" placeholder="username" value="">
+                </div>
 
-            <div class="col-auto">
-                <input th:value="${username}"
-                       id="username"
-                       name="username"
-                       type="text" min="4" max="20"
-                       class="form-control"
-                       placeholder="Username"/>
+                <div>
+                    <label for="password">Парола:</label>
+                    <input id="password" name="password" type="password" placeholder="********" value="">
+                </div>
 
-            </div>
+                <button class="btn" type="submit">Влез</button>
 
-            <div class="login-detail mt-2">
-                <img src="/images/password-icon.png" alt="username">
-            </div>
+                <p class="field">
+                    <span>If you don't have profile click <a href="/register">here</a></span>
+                </p>
+            </form>
+        </section>
 
-            <div class="col-auto">
-                <input
-                        name="password"
-                        type="password" min="4"
-                        max="20" class="form-control"
-                        placeholder="Password"/>
 
-            </div>
-            <p th:if="${bad_credentials}" class="error alert alert-danger">Wrong user or password</p>
-            <button class="login-form-button" type="submit">Login</button>
-            <div class="forgot-links">
-                <a class="forgot-links" href="">Forgot your password?</a>
-            </div>
-        </div>
-    </form>
-</section>
+<!--            <div class="login-detail h2">Логин</div>-->
+
+<!--            <div class="login-detail">-->
+<!--                <img src="/images/username-icon.png" alt="username">-->
+<!--            </div>-->
+
+<!--            <div class="col-auto">-->
+<!--                <input th:value="${username}"-->
+<!--                       id="username"-->
+<!--                       name="username"-->
+<!--                       type="text" min="4" max="20"-->
+<!--                       class="form-control"-->
+<!--                       placeholder="Username"/>-->
+
+<!--            </div>-->
+
+<!--            <div class="login-detail mt-2">-->
+<!--                <img src="/images/password-icon.png" alt="username">-->
+<!--            </div>-->
+
+<!--            <div class="col-auto">-->
+<!--                <input-->
+<!--                        name="password"-->
+<!--                        type="password" min="4"-->
+<!--                        max="20" class="form-control"-->
+<!--                        placeholder="Password"/>-->
+
+<!--            </div>-->
+<!--            <p th:if="${bad_credentials}" class="error alert alert-danger">Wrong user or password</p>-->
+<!--            <button class="login-form-button" type="submit">Login</button>-->
+<!--            <div class="forgot-links">-->
+<!--                <a class="forgot-links" href="">Forgot your password?</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</section>-->
 
 
 <footer th:replace="fragments/commons::footer"></footer>
