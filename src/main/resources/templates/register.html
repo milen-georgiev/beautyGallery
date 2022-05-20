@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+<section id="registerPage">
+  <form class="registerForm" th:action="@{/users/register}"
+            th:method="POST"
+            th:object="${userRegistrationBindingModel}">
+    <div class="regLogo">
+      <img src="/images/registration.png" alt="registration-logo" />
+      <h2>Регистрация</h2>
+    </div>
+    <div class="regLeft">
+      <div class="on-dark">
+        <label for="username">Username:</label>
+        <input  th:field="*{username}"
+                minlength="5"
+                maxlength="20"
+                id="username"
+                name="username"
+                type="text"
+                placeholder="Потребителско име"
+                value="">
+      </div>
+      <div class="on-dark">
+        <label for="firstName">Име :</label>
+        <input  th:field="*{firstName}"
+                minlength="5"
+                maxlength="20"
+                id="firstName"
+                name="firstName"
+                type="text"
+                placeholder="Име"
+                value="">
+      </div>
+
+      <div class="on-dark">
+        <label for="lastName">Фамилия :</label>
+        <input  th:field="*{lastName}"
+                minlength="5"
+                maxlength="20"
+                id="lastName"
+                name="lastName"
+                type="text"
+                placeholder="Фамилия"
+                value="">
+      </div>
+
+      <div class="on-dark">
+        <label for="age">Години :</label>
+        <input  th:field="*{age}"
+                id="age"
+                name="age"
+                min="12"
+                type="number"
+                placeholder="Възраст"
+                value="">
+      </div>
+    </div>
+    <div class="regRight">
+      <div class="on-dark">
+        <label for="email">Email :</label>
+        <input  th:field="*{email}"
+                minlength="5"
+                maxlength="20"
+                id="email"
+                name="email"
+                type="text"
+                placeholder="name@mail.com"
+                value="">
+      </div>
+
+      <div class="on-dark">
+        <label for="town">Град :</label>
+        <input  th:field="*{town}"
+                minlength="5"
+                maxlength="20"
+                id="town"
+                name="town"
+                type="text"
+                placeholder="София"
+                value="">
+      </div>
+
+      <div class="on-dark">
+        <label for="password">Парола :</label>
+        <input th:field="*{password}"
+               id="password"
+               name="password"
+               type="password"
+               placeholder="********"
+               value="">
+      </div>
+
+      <div class="on-dark">
+        <label for="repeatPassword">Повтори паролата :</label>
+        <input th:field="*{confirmPassword}"
+               id="repeatPassword"
+               name="repeatPassword"
+               type="password"
+               placeholder="********"
+               value="">
+      </div>
+    </div>
+    <div class="regDown">
+      <button class="btn" type="submit">Регистрация</button>
+
+      <p class="field">
+        <span>Ако имате профил щракнете <a href="/users/login">Тук</a></span>
+      </p>
+    </div>
+
+  </form>
+</section>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

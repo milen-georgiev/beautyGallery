@@ -14,6 +14,7 @@ public class UserViewModel {
     private String lastName;
     private Integer age;
     private String email;
+    private String town;
     private LocalDate created;
     private Set<UserRoleEntity> roles = new HashSet<>();
 

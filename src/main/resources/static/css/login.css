@@ -59,8 +59,8 @@ input {
 }
 
 button {
-    margin-top: 20px;
-    background: #F34515;
+    margin: 30px 0;
+    background: #66f315;
     height: 40px;
     border-radius: 20px;
     cursor: pointer;

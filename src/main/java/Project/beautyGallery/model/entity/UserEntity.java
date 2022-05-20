@@ -21,6 +21,8 @@ public class UserEntity extends BaseEntity{
     @Column(nullable = false)
     private String email;
     @NotNull
+    private String town;
+    @NotNull
     private Integer age;
     @Column(nullable = false)
     private LocalDate created;
@@ -73,6 +75,14 @@ public class UserEntity extends BaseEntity{
     public UserEntity setEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public Integer getAge() {

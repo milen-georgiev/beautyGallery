@@ -4,12 +4,15 @@ import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.entity.UserRoleEntity;
 import Project.beautyGallery.model.entity.enums.RoleNameEnum;
 import Project.beautyGallery.model.serviceModel.UserRegistrationServiceModel;
-import Project.beautyGallery.model.viewModel.UserViewModel;
 import Project.beautyGallery.repository.UserRepository;
 import Project.beautyGallery.repository.UserRoleRepository;
 import Project.beautyGallery.service.UserService;
 import org.modelmapper.ModelMapper;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,21 +26,60 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserRoleRepository userRoleRepository;
+    private final ModelMapper modelMapper;
+    private final BeautyGalleryUserServiceImpl beautyGalleryUserService;
 
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository,
-                           UserRoleRepository userRoleRepository) {
+                           UserRoleRepository userRoleRepository, ModelMapper modelMapper, BeautyGalleryUserServiceImpl beautyGalleryUserService) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
+        this.modelMapper = modelMapper;
+        this.beautyGalleryUserService = beautyGalleryUserService;
     }
-
-
 
 
     @Override
     public void initializeUsersAndRoles() {
         initializeRoles();
         initializeUsers();
+    }
+
+    @Override
+    public boolean isUserNameFree(String username) {
+        return userRepository
+                .findByUsernameIgnoreCase(username)
+                .isEmpty();
+    }
+
+    @Override
+    public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
+        UserRoleEntity userRole = userRoleRepository.findByName(RoleNameEnum.USERS);
+
+        UserEntity newUser = new UserEntity();
+
+        newUser
+                .setUsername(userRegistrationServiceModel.getUsername())
+                .setFirstName(userRegistrationServiceModel.getFirstName())
+                .setLastName(userRegistrationServiceModel.getLastName())
+                .setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()))
+                .setEmail(userRegistrationServiceModel.getEmail())
+                .setAge(userRegistrationServiceModel.getAge())
+                .setCreated(LocalDate.now())
+                .setRoles(Set.of(userRole))
+                .setTown(userRegistrationServiceModel.getTown());
+
+        userRepository.save(newUser);
+
+        UserDetails principal = beautyGalleryUserService.loadUserByUsername(newUser.getUsername());
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                principal,
+                newUser.getPassword(),
+                principal.getAuthorities()
+        );
+
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
     public void initializeUsers() {
@@ -53,7 +95,8 @@ public class UserServiceImpl implements UserService {
                     .setFirstName("Admin")
                     .setLastName("Adminov")
                     .setCreated(LocalDate.now())
-                    .setPassword(passwordEncoder.encode("test"));
+                    .setPassword(passwordEncoder.encode("test"))
+                    .setTown("test");
 
             admin.setRoles(Set.of(adminRole, userRole));
             userRepository.save(admin);
@@ -66,7 +109,8 @@ public class UserServiceImpl implements UserService {
                     .setFirstName("Ivan")
                     .setLastName("Ivanov")
                     .setCreated(LocalDate.now())
-                    .setPassword(passwordEncoder.encode("test"));
+                    .setPassword(passwordEncoder.encode("test"))
+                    .setTown("test");
 
             user.setRoles(Set.of(userRole));
             userRepository.save(user);

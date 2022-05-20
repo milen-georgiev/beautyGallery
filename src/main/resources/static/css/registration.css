@@ -1,0 +1,65 @@
+form > h2 {
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 920px) {
+    .registerForm {
+        display: inline-grid;
+        width: 850px;
+        height: 850px;
+        grid-template:  "regLogo regLogo"
+                        "regLeft regRight"
+                        "regDown regDown";
+    }
+
+    .regLogo {
+        height: 100px;
+        padding: 10px;
+        grid-area: regLogo;
+    }
+
+    .regLeft {
+        padding: 10px;
+        grid-area: regLeft;
+    }
+
+    .regRight {
+        padding: 10px;
+        grid-area: regRight;
+    }
+
+    .regDown {
+        padding: 10px;
+        grid-area: regDown;
+    }
+
+
+}
+
+@media only screen and (max-width: 919px) {
+    .registerForm {
+        display: inline-block;
+        width: 350px;
+        height: 1050px;
+    }
+
+
+}
+
+.registerForm {
+    text-align: center;
+    position: relative;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #cf370991;
+    box-shadow: 14px 14px 30px #464a4e, -14px -14px 30px #464a4e;
+    justify-content: center;
+}
+
+#registerPage {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+
+}

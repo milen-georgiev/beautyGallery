@@ -8,6 +8,7 @@ public class UserRegistrationServiceModel {
     private String lastName;
     private String password;
     private String email;
+    private String town;
     private Integer age;
 
     public UserRegistrationServiceModel() {
@@ -58,6 +59,14 @@ public class UserRegistrationServiceModel {
     public UserRegistrationServiceModel setEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public Integer getAge() {
