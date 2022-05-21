@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main id="container">
+    <div id="profileCard" class="profileBadge">
+        <section class="welcomeMessage">
+            <div>
+                <div>
+                    <p>Здравей :
+                        <th:block th:text="${userViewModel.getUsername()}"></th:block>
+                    </p>
+                </div>
+                <div class="btnForm">
+                    <div class="formLogout">
+                        <form th:action="@{/users/logout}" th:method="POST">
+                            <button class="btnLogout" type="submit" value="Logout">Изход</button>
+                        </form>
+                    </div>
+<!--                    ToDo-->
+<!--                    <div class="formEdit">-->
+<!--                        <form th:action="@{/users/logout}" th:method="POST">-->
+<!--                            <button class="btnEdit" type="submit" value="Logout">Редактирай</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <div class="formDelete">-->
+<!--                        <form th:action="@{/users/logout}" th:method="POST">-->
+<!--                            <button class="btnDelete" type="submit" value="Logout">Изтриване</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </section>
+        <section class="userDetails">
+            <div>
+                <p>Име :
+                    <th:block th:text="${userViewModel.getFirstName()}"></th:block>
+                </p>
+                <p>Фамилия:
+                    <th:block th:text="${userViewModel.getLastName()}"></th:block>
+                </p>
+                <p>Години :
+                    <th:block th:text="${userViewModel.getAge()}"></th:block>
+                </p>
+                <p>E-mail:
+                    <th:block th:text="${userViewModel.getEmail()}"></th:block>
+                </p>
+            </div>
+        </section>
+        <section class="userStatistic">
+
+        </section>
+        <section class="userArticles">
+
+        </section>
+        <section class="userVideo">
+
+        </section>
+        <section class="userPictures">
+
+        </section>
+    </div>
+</main>
+
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

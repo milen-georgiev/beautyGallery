@@ -16,7 +16,7 @@
       <h2>Регистрация</h2>
     </div>
     <div class="regLeft">
-      <div class="on-dark">
+      <div>
         <label for="username">Username:</label>
         <input  th:field="*{username}"
                 minlength="5"
@@ -27,7 +27,7 @@
                 placeholder="Потребителско име"
                 value="">
       </div>
-      <div class="on-dark">
+      <div>
         <label for="firstName">Име :</label>
         <input  th:field="*{firstName}"
                 minlength="5"
@@ -39,7 +39,7 @@
                 value="">
       </div>
 
-      <div class="on-dark">
+      <div>
         <label for="lastName">Фамилия :</label>
         <input  th:field="*{lastName}"
                 minlength="5"
@@ -51,7 +51,7 @@
                 value="">
       </div>
 
-      <div class="on-dark">
+      <div>
         <label for="age">Години :</label>
         <input  th:field="*{age}"
                 id="age"
@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="regRight">
-      <div class="on-dark">
+      <div>
         <label for="email">Email :</label>
         <input  th:field="*{email}"
                 minlength="5"
@@ -75,7 +75,7 @@
                 value="">
       </div>
 
-      <div class="on-dark">
+      <div>
         <label for="town">Град :</label>
         <input  th:field="*{town}"
                 minlength="5"
@@ -87,7 +87,7 @@
                 value="">
       </div>
 
-      <div class="on-dark">
+      <div>
         <label for="password">Парола :</label>
         <input th:field="*{password}"
                id="password"
@@ -97,7 +97,7 @@
                value="">
       </div>
 
-      <div class="on-dark">
+      <div>
         <label for="repeatPassword">Повтори паролата :</label>
         <input th:field="*{confirmPassword}"
                id="repeatPassword"
@@ -108,9 +108,9 @@
       </div>
     </div>
     <div class="regDown">
-      <button class="btn" type="submit">Регистрация</button>
+      <button class="buttonForm" type="submit">Регистрация</button>
 
-      <p class="field">
+      <p>
         <span>Ако имате профил щракнете <a href="/users/login">Тук</a></span>
       </p>
     </div>

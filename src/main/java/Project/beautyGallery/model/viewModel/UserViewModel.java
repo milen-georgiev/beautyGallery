@@ -5,10 +5,11 @@ import Project.beautyGallery.model.entity.UserRoleEntity;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 public class UserViewModel {
 
-    private Long id;
+    private UUID id;
     private String username;
     private String firstName;
     private String lastName;
@@ -21,13 +22,20 @@ public class UserViewModel {
     public UserViewModel() {
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public UserViewModel setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
-        return this;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public String getUsername() {

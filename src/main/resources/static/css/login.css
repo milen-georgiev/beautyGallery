@@ -2,7 +2,7 @@ form>h2 {
     font-weight: bold;
 }
 
-form {
+.loginForm {
     display: inline-block;
     text-align: center;
     position: relative;
@@ -58,7 +58,7 @@ input {
     box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
-button {
+.buttonForm {
     margin: 30px 0;
     background: #66f315;
     height: 40px;
@@ -69,6 +69,6 @@ button {
     transition: 0.5s;
 }
 
-button:hover {
+.buttonForm:hover {
     box-shadow: none;
 }

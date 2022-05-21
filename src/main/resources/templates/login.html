@@ -11,7 +11,8 @@
 
 <section id="loginPage">
     <form th:action="@{/users/login}"
-          th:method="POST">
+          th:method="POST"
+          class="loginForm">
         <img src="/images/loginLogo.png" alt="logo"/>
         <h2>Вход</h2>
 
@@ -38,7 +39,7 @@
                    value="">
         </div>
 
-        <button class="btn" type="submit">Влез</button>
+        <button class="buttonForm" type="submit">Влез</button>
 
         <p class="field">
             <span>Ако нямате профил щракнете <a href="/users/register">Тук</a></span>

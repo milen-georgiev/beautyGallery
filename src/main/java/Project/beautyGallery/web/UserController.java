@@ -1,9 +1,12 @@
-package Project.beautyGallery.Controller;
+package Project.beautyGallery.web;
 
 import Project.beautyGallery.model.binding.UserRegistrationBindingModel;
 import Project.beautyGallery.model.serviceModel.UserRegistrationServiceModel;
+import Project.beautyGallery.model.viewModel.UserViewModel;
 import Project.beautyGallery.service.UserService;
+import Project.beautyGallery.service.impl.BeautyGalleryUsers;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,6 +76,15 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/profile")
+    private String profile(Model model, @AuthenticationPrincipal BeautyGalleryUsers user) {
+
+        UserViewModel userViewModel = userService.userDetails(user.getUserIdentified());
+
+        model.addAttribute("userViewModel", userViewModel);
+
+        return "profile";
+    }
 
     @ModelAttribute("userRegistrationBindingModel")
     public UserRegistrationBindingModel userModel() {

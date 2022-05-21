@@ -4,6 +4,7 @@ import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.entity.UserRoleEntity;
 import Project.beautyGallery.model.entity.enums.RoleNameEnum;
 import Project.beautyGallery.model.serviceModel.UserRegistrationServiceModel;
+import Project.beautyGallery.model.viewModel.UserViewModel;
 import Project.beautyGallery.repository.UserRepository;
 import Project.beautyGallery.repository.UserRoleRepository;
 import Project.beautyGallery.service.UserService;
@@ -80,6 +81,15 @@ public class UserServiceImpl implements UserService {
 
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+
+    @Override
+    public UserViewModel userDetails(String user) {
+        UserEntity userEntity = userRepository.findByUsername(user).orElseThrow();
+
+        UserViewModel userViewModel = modelMapper.map(userEntity, UserViewModel.class);
+
+        return userViewModel;
     }
 
     public void initializeUsers() {

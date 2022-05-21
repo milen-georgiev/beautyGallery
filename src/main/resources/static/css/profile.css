@@ -1,0 +1,123 @@
+
+@media only screen and (min-width: 920px) {
+    #profileCard {
+        grid-template:  "welcomeMessage welcomeMessage"
+                        "userDetails userStatistic"
+                        "userPictures userVideo"
+                        "userPictures userArticles";
+    }
+
+}
+
+@media only screen and (max-width: 919px) {
+    #profileCard {
+        grid-template:  "welcomeMessage"
+                        "userDetails"
+                        "userStatistic"
+                        "userArticles"
+                        "userVideo"
+                        "userPictures";
+    }
+
+}
+
+.welcomeMessage {
+    padding: 10px;
+    text-align: center;
+    grid-area: welcomeMessage;
+}
+
+.userDetails {
+    padding: 25px;
+    grid-area: userDetails;
+}
+
+.userStatistic {
+    padding: 10px;
+    grid-area: userStatistic;
+}
+
+.userArticles {
+    padding: 10px;
+    grid-area: userArticles;
+}
+
+.userVideo {
+    padding: 10px;
+    grid-area: userVideo;
+}
+
+.userPictures {
+    padding: 10px;
+    grid-area: userPictures;
+}
+
+#container {
+    margin-top: 25px;
+    padding: 15px;
+    width: 100%;
+}
+
+#profileCard {
+    display: inline-grid;
+    background: #D2386C;
+    border-radius: 45px;
+    width: 100%;
+}
+
+.btnLogout {
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    background: #498afb;
+}
+
+.btnLogout:hover {
+    background: #9BB7D4;
+}
+
+.btnDelete {
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    background: #498afb;
+}
+
+.btnDelete:hover  {
+    background: #ff3860;
+}
+
+
+.btnEdit {
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    background: #498afb;
+}
+
+.btnEdit:hover {
+    background: #09c372;
+}
+
+.formLogout{
+    padding: 5px;
+    width: 100px;
+    grid-area: formLogout;
+}
+.formDelete{
+    padding: 5px;
+    width: 100px;
+    grid-area: formDelete;
+}
+.formEdit{
+    padding: 5px;
+    width: 100px;
+    grid-area: formEdit;
+}
+
+.btnForm {
+    display: inline-grid;
+    padding: 15px;
+    grid-template: "formLogout formDelete formEdit";
+}
+
