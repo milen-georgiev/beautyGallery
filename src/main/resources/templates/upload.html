@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main id="container">
+    <div id="uploadForm">
+        <section class="navUpload">
+                <button class="picturesUpload">Качи Снимка</button>
+                <button class="videoUpload">Качи Видео</button>
+                <button class="articlesUpload">Качи Статия</button>
+        </section>
+
+        <section class="formUpload">
+            <div>
+                <div class="formLogo">
+                    <img src="/images/uploadVideo.png">
+                    <h3>Добави видео</h3>
+                </div>
+                <div class="formDetails">
+                    <form th:action="@{/upload/video}"
+                          th:method="POST"
+                          th:object="${videoBindingModel}">>
+                            <h2>Добави видео</h2>
+                            <div class="name">
+                                <label for="videoUrl">Линк към видеото:</label>
+                                <input name="videoUrl"
+                                       id="videoUrl"
+                                       th:field="*{videoUrl}"
+                                       type="text"
+                                       placeholder="Пример -> Um3C9Gmpm4Y">
+                            </div>
+                            <button class="buttonForm" type="submit">Добави</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

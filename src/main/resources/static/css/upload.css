@@ -1,0 +1,68 @@
+@media only screen and (min-width: 920px) {
+
+}
+
+@media only screen and (max-width: 919px) {
+
+}
+
+#uploadForm {
+    display: grid;
+    grid-template:  "navUpload"
+                    "formUpload";
+}
+
+.navUpload {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template:"picturesUpload videoUpload articlesUpload";
+}
+
+
+.navUpload {
+    padding: 20px;
+    grid-area: navUpload;
+}
+
+.formUpload {
+    padding: 20px;
+    border-radius: 25px;
+    background: #ff3860;
+    grid-area: formUpload;
+    grid-template: "formLogo"
+                    "formDetails";
+}
+/*Form Styles*/
+
+.formLogo {
+    padding: 20px;
+    text-align: center;
+    grid-area: formLogo;
+}
+
+.formDetails {
+    grid-area: formDetails;
+}
+
+/*Button Styles*/
+
+.articlesUpload {
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+    grid-area: articlesUpload;
+}
+
+.videoUpload {
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+    grid-area: videoUpload;
+}
+
+.picturesUpload {
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+    grid-area: picturesUpload;
+}
