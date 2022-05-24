@@ -25,6 +25,13 @@ public class ArticlesController {
 
         List<ArticlesViewModel> articles = articlesService.allArticlesView();
 
+        for (ArticlesViewModel articlesViewModel: articles){
+            articlesViewModel
+                    .setDescription(articlesViewModel
+                                    .getDescription()
+                                    .substring(0,50) + "...");
+        }
+
         model.addAttribute("articles", articles);
 
         return "articles";

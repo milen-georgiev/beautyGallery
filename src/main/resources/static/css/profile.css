@@ -52,11 +52,6 @@
     grid-area: userPictures;
 }
 
-#container {
-    margin-top: 25px;
-    padding: 15px;
-    width: 100%;
-}
 
 #profileCard {
     display: inline-grid;

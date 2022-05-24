@@ -1,0 +1,89 @@
+@media only screen and (min-width: 920px) {
+    .articlesCard {
+        grid-template:  "articlesCardImage articlesCardDetails"
+                        "articlesCardImage articlesCardDetails";
+    }
+
+    .articlesImage{
+        width: 200px;
+    }
+
+}
+@media only screen and (max-width: 919px) {
+    .articlesCard {
+        grid-template:  "articlesCardImage"
+                        "articlesCardDetails";
+    }
+    .articlesImage{
+        width: 100%;
+    }
+}
+
+.detailsCard {
+    display: grid;
+    grid-template: "description"
+                    "readMe"
+                    "infoForUser";
+}
+
+.infoForUser {
+    padding: 10px;
+    grid-area: infoForUser;
+    display: inline-grid;
+    justify-content: space-between;
+    grid-template: "time name";
+}
+
+.time {
+    padding: 10px;
+    grid-area: time;
+}
+
+.readMe {
+    padding: 10px;
+    grid-area: readMe;
+}
+
+.name {
+    padding: 10px;
+    grid-area: name;
+}
+
+
+.description {
+    padding: 10px;
+    grid-area: description;
+}
+
+
+
+.articlesCardImage{
+    padding: 15px;
+    border-radius: 25px;
+    grid-area: articlesCardImage;
+}
+
+.articlesCardDetails{
+    padding: 15px;
+    border-radius: 25px;
+    grid-area: articlesCardDetails;
+}
+
+.articlesCard {
+    padding: 15px;
+    width: 100%;
+    border-radius: 25px;
+    background: #f4cbb7;
+    display: inline-grid;
+}
+
+.articlesContainer {
+    padding: 15px;
+    width: 100%;
+}
+
+.articlesImage{
+    height: 250px;
+    border-radius: 35px;
+}
+
