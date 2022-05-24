@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "grandmas_secret_articles")
-public class GrandmasSecretArticlesEntity extends BaseEntity{
+public class ArticlesEntity extends BaseEntity{
 
     @Column(nullable = false)
     private String name;
@@ -28,14 +28,14 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
     private LocalDate added;
     private String status;
 
-    public GrandmasSecretArticlesEntity() {
+    public ArticlesEntity() {
     }
 
     public String getName() {
         return name;
     }
 
-    public GrandmasSecretArticlesEntity setName(String name) {
+    public ArticlesEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -44,7 +44,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return description;
     }
 
-    public GrandmasSecretArticlesEntity setDescription(String description) {
+    public ArticlesEntity setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -53,7 +53,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return category;
     }
 
-    public GrandmasSecretArticlesEntity setCategory(ArticlesNameEnum category) {
+    public ArticlesEntity setCategory(ArticlesNameEnum category) {
         this.category = category;
         return this;
     }
@@ -62,7 +62,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return comments;
     }
 
-    public GrandmasSecretArticlesEntity setComments(List<CommentsEntity> comments) {
+    public ArticlesEntity setComments(List<CommentsEntity> comments) {
         this.comments = comments;
         return this;
     }
@@ -71,7 +71,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return url;
     }
 
-    public GrandmasSecretArticlesEntity setUrl(String url) {
+    public ArticlesEntity setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -80,7 +80,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return publicId;
     }
 
-    public GrandmasSecretArticlesEntity setPublicId(String publicId) {
+    public ArticlesEntity setPublicId(String publicId) {
         this.publicId = publicId;
         return this;
     }
@@ -89,7 +89,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return published;
     }
 
-    public GrandmasSecretArticlesEntity setPublished(UserEntity published) {
+    public ArticlesEntity setPublished(UserEntity published) {
         this.published = published;
         return this;
     }
@@ -98,7 +98,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return status;
     }
 
-    public GrandmasSecretArticlesEntity setStatus(String status) {
+    public ArticlesEntity setStatus(String status) {
         this.status = status;
         return this;
     }
@@ -107,7 +107,7 @@ public class GrandmasSecretArticlesEntity extends BaseEntity{
         return added;
     }
 
-    public GrandmasSecretArticlesEntity setAdded(LocalDate added) {
+    public ArticlesEntity setAdded(LocalDate added) {
         this.added = added;
         return this;
     }

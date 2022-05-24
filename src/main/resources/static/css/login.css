@@ -23,19 +23,6 @@ form>h2 {
     margin-bottom: 20px;
 }
 
-
-label,
-input,
-button {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin-top: 10px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-}
-
 label {
     margin-bottom: 4px;
 }

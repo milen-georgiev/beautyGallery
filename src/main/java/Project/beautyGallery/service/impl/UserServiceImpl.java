@@ -9,7 +9,6 @@ import Project.beautyGallery.repository.UserRepository;
 import Project.beautyGallery.repository.UserRoleRepository;
 import Project.beautyGallery.service.UserService;
 import org.modelmapper.ModelMapper;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

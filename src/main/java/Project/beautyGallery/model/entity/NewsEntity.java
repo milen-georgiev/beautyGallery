@@ -16,7 +16,7 @@ public class NewsEntity extends BaseEntity{
     public NewsEntity() {
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 

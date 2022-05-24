@@ -6,7 +6,7 @@
 
 }
 
-#uploadForm {
+#containerForm {
     display: grid;
     grid-template:  "navUpload"
                     "formUpload";
@@ -24,8 +24,9 @@
     grid-area: navUpload;
 }
 
-.formUpload {
+#formUpload {
     padding: 20px;
+    display: none;
     border-radius: 25px;
     background: #ff3860;
     grid-area: formUpload;
@@ -46,23 +47,38 @@
 
 /*Button Styles*/
 
-.articlesUpload {
+#articlesUpload {
     padding: 10px;
     width: 100px;
     border-radius: 20px;
     grid-area: articlesUpload;
 }
 
-.videoUpload {
+#videoUpload {
     padding: 10px;
     width: 100px;
     border-radius: 20px;
     grid-area: videoUpload;
 }
 
-.picturesUpload {
+#picturesUpload {
     padding: 10px;
     width: 100px;
     border-radius: 20px;
     grid-area: picturesUpload;
 }
+
+#formVideoUpload {
+    display: none;
+}
+
+#formArticlesUpload {
+    display: none;
+}
+
+#formPicturesUpload {
+    display: none;
+}
+
+
+

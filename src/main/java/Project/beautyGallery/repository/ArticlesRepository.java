@@ -1,12 +1,12 @@
 package Project.beautyGallery.repository;
 
-import Project.beautyGallery.model.entity.GrandmasSecretArticlesEntity;
+import Project.beautyGallery.model.entity.ArticlesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface GrandmasSecretArticlesRepository extends JpaRepository<GrandmasSecretArticlesEntity, UUID> {
+public interface ArticlesRepository extends JpaRepository<ArticlesEntity, UUID> {
 
 }

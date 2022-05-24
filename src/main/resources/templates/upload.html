@@ -9,15 +9,14 @@
 <header th:replace="fragments/commons::navigation"></header>
 
 <main id="container">
-    <div id="uploadForm">
+    <div id="containerForm">
         <section class="navUpload">
-                <button class="picturesUpload">Качи Снимка</button>
-                <button class="videoUpload">Качи Видео</button>
-                <button class="articlesUpload">Качи Статия</button>
+                <button id="picturesUpload">Качи Снимка</button>
+                <button id="videoUpload">Качи Видео</button>
+                <button id="articlesUpload">Качи Статия</button>
         </section>
-
-        <section class="formUpload">
-            <div>
+        <section id="formUpload">
+            <div id="formVideoUpload">
                 <div class="formLogo">
                     <img src="/images/uploadVideo.png">
                     <h3>Добави видео</h3>
@@ -25,24 +24,88 @@
                 <div class="formDetails">
                     <form th:action="@{/upload/video}"
                           th:method="POST"
-                          th:object="${videoBindingModel}">>
-                            <h2>Добави видео</h2>
-                            <div class="name">
-                                <label for="videoUrl">Линк към видеото:</label>
-                                <input name="videoUrl"
-                                       id="videoUrl"
-                                       th:field="*{videoUrl}"
-                                       type="text"
-                                       placeholder="Пример -> Um3C9Gmpm4Y">
-                            </div>
-                            <button class="buttonForm" type="submit">Добави</button>
+                          th:object="${videoBindingModel}">
+                        <h2>Добави видео</h2>
+                        <div class="name">
+                            <label for="videoUrl">Линк към видеото:</label>
+                            <input name="videoUrl"
+                                   id="videoUrl"
+                                   th:field="*{videoUrl}"
+                                   type="text"
+                                   placeholder="Пример -> Um3C9Gmpm4Y">
+                        </div>
+                        <button class="buttonForm" type="submit">Добави</button>
                     </form>
                 </div>
+            </div>
+            <div id="formArticlesUpload">
+                <form th:action="@{/upload/articles}"
+                      th:object="${articlesBindingModel}"
+                      th:method="POST"
+                      enctype="multipart/form-data">
+                    <h2>Добави статия</h2>
+                    <div>
+                        <label for="articleName">Заглавие на статията:</label>
+                        <input name="name"
+                               th:field="*{name}"
+                               id="articleName"
+                               type="text"
+                               placeholder="Лесен начин за....">
+                        <label for="imageForArticles">Избери снимка за статията:</label>
+                        <input name="pictures"
+                               id="imageForArticles"
+                               th:field="*{pictures}"
+                               required type="file"
+                               class="form-control">
+                        <h5>Изберете роректна категория</h5>
+                        <select
+                                th:field="*{category}"
+                                class="form-control">
+                            <option th:each="t : ${T(Project.beautyGallery.model.entity.enums.ArticlesNameEnum).values()}"
+                                    th:value="${t}" th:text="${t}"></option>
+                        </select>
+                        <label for="articleDescription">Описание</label>
+                        <textarea
+                                th:field="*{description}"
+                                name="description"
+                                id="articleDescription"
+                                minlength="50"
+                                rows="5"
+                                placeholder="Съдържание на статията .....">
+                                </textarea>
+                    </div>
+                    <button class="buttonForm" type="submit">Добави</button>
+                </form>
+            </div>
+            <div id="formPicturesUpload">
+                <form th:action="@{/upload/pictures}"
+                      th:method="POST"
+                      th:object="${picturesBindingModel}"
+                      enctype="multipart/form-data">
+                    <h2>Добави снимка</h2>
+                    <div class="name">
+                        <label for="pictures">Изберете снимка:</label>
+                        <input name="pictures"
+                               id="pictures"
+                               th:field="*{pictures}"
+                               type="file">
+                        <select th:field="*{categoryType}">
+                            <option th:each="t : ${T(Project.beautyGallery.model.entity.enums.TypeNameEnum).values()}"
+                                    th:value="${t}" th:text="${t}"></option>
+                        </select>
+                        <select th:field="*{categoryStyle}">
+
+                            <option th:each="s : ${T(Project.beautyGallery.model.entity.enums.StyleNameEnum).values()}"
+                                    th:value="${s}" th:text="${s}"></option>
+                        </select>
+                    </div>
+                    <button class="buttonForm" type="submit">Добави</button>
+                </form>
             </div>
         </section>
     </div>
 </main>
-
+<script src="/js/uploadPage.js"></script>
 <footer th:replace="fragments/commons::footer"></footer>
 
 </body>

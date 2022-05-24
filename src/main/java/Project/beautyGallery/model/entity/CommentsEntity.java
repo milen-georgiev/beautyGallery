@@ -17,7 +17,7 @@ public class CommentsEntity extends BaseEntity {
     @ManyToOne
     private UserEntity user;
     @ManyToOne
-    private GrandmasSecretArticlesEntity articles;
+    private ArticlesEntity articles;
     private String alerts;
     private LocalDateTime added;
 
@@ -42,11 +42,11 @@ public class CommentsEntity extends BaseEntity {
         return this;
     }
 
-    public GrandmasSecretArticlesEntity getArticles() {
+    public ArticlesEntity getArticles() {
         return articles;
     }
 
-    public CommentsEntity setArticles(GrandmasSecretArticlesEntity articles) {
+    public CommentsEntity setArticles(ArticlesEntity articles) {
         this.articles = articles;
         return this;
     }
