@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main id="container">
+    <section id="aboutCard">
+        <section class="about">
+            <div class="card">
+                <p> <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Consectetur eligendi et expedita provident sint, soluta unde. Atque
+                    blanditiis deleniti dolore doloremque exercitationem, expedita fugit
+                    laboriosam nisi officiis repudiandae sunt ullam?</strong></strong></p>
+            </div>
+        </section>
+        <section class="contact">
+            <div class="card">
+                <p class="card-text">E-mail :</p>
+                <p class="card-text">mail@suport.com</p>
+                <p class="card-text">Телефон</p>
+                <p class="card-text">+359 88 888 8888</p>
+                <p class="card-text">+359 87 888 8888</p>
+                <p class="card-text">+359 89 888 8888</p>
+            </div>
+        </section>
+    </section>
+</main>
+
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

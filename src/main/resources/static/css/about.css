@@ -1,0 +1,35 @@
+@media only screen and (min-width: 920px) {
+    #aboutCard {
+        grid-template: "about contact";
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    #aboutCard {
+        grid-template:  "about"
+                        "contact";
+    }
+}
+
+#aboutCard {
+    display: inline-grid;
+}
+
+.about {
+    padding: 15px;
+    grid-area: about;
+    grid-template:  "card";
+
+}
+
+.contact {
+    padding: 15px;
+    grid-area: contact;
+    grid-template:  "card";
+}
+
+.card {
+    border-radius: 25px;
+    background: #498afb;
+    padding: 15px;
+}
