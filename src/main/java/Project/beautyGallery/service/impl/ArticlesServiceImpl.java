@@ -3,6 +3,7 @@ package Project.beautyGallery.service.impl;
 import Project.beautyGallery.model.entity.ArticlesEntity;
 import Project.beautyGallery.model.entity.CloudinaryImageEntity;
 import Project.beautyGallery.model.serviceModel.ArticlesServiceModel;
+import Project.beautyGallery.model.viewModel.ArticlesViewModel;
 import Project.beautyGallery.repository.ArticlesRepository;
 import Project.beautyGallery.repository.UserRepository;
 import Project.beautyGallery.service.ArticlesService;
@@ -10,8 +11,11 @@ import Project.beautyGallery.service.CloudinaryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ArticlesServiceImpl implements ArticlesService {
@@ -48,5 +52,20 @@ public class ArticlesServiceImpl implements ArticlesService {
 
 
         articlesRepository.save(articlesEntity);
+    }
+
+    @Transactional
+    @Override
+    public List<ArticlesViewModel> allArticlesView() {
+        return articlesRepository
+                .findAll()
+                .stream()
+                .map(articlesEntity -> {
+                    ArticlesViewModel articlesViewModel = modelMapper
+                            .map(articlesEntity, ArticlesViewModel.class);
+
+                    return articlesViewModel;
+                })
+                .collect(Collectors.toList());
     }
 }

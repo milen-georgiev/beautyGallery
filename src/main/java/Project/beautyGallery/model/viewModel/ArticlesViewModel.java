@@ -7,9 +7,10 @@ import Project.beautyGallery.model.entity.enums.ArticlesNameEnum;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ArticlesViewModel {
-    private Long id;
+    private UUID id;
     private String name;
     private String description;
     private ArticlesNameEnum category;
@@ -22,75 +23,84 @@ public class ArticlesViewModel {
     public ArticlesViewModel() {
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public ArticlesViewModel setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public ArticlesViewModel setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public ArticlesViewModel setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public ArticlesNameEnum getCategory() {
         return category;
     }
 
-    public void setCategory(ArticlesNameEnum category) {
+    public ArticlesViewModel setCategory(ArticlesNameEnum category) {
         this.category = category;
+        return this;
     }
 
     public List<CommentsEntity> getComments() {
         return comments;
     }
 
-    public void setComments(List<CommentsEntity> comments) {
+    public ArticlesViewModel setComments(List<CommentsEntity> comments) {
         this.comments = comments;
+        return this;
     }
 
     public UserEntity getPublished() {
         return published;
     }
 
-    public void setPublished(UserEntity published) {
+    public ArticlesViewModel setPublished(UserEntity published) {
         this.published = published;
+        return this;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public ArticlesViewModel setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public String getPublicId() {
         return publicId;
     }
 
-    public void setPublicId(String publicId) {
+    public ArticlesViewModel setPublicId(String publicId) {
         this.publicId = publicId;
+        return this;
     }
 
     public LocalDate getAdded() {
         return added;
     }
 
-    public void setAdded(LocalDate added) {
+    public ArticlesViewModel setAdded(LocalDate added) {
         this.added = added;
+        return this;
     }
 }
