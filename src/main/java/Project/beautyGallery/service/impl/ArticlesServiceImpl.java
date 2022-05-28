@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,5 +68,14 @@ public class ArticlesServiceImpl implements ArticlesService {
                     return articlesViewModel;
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public ArticlesViewModel findArticlesById(UUID id) {
+        return articlesRepository
+                .findById(id)
+                .map(articlesEntity -> modelMapper.map(articlesEntity, ArticlesViewModel.class))
+                .orElse(null);
     }
 }

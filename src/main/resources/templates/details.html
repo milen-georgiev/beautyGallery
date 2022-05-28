@@ -8,7 +8,8 @@
 <body>
 <header th:replace="fragments/commons::navigation"></header>
 
-<main id="container">
+<main>
+    <input type="hidden" name="articleId" id="articleId" th:value="${articles.id}">
     <section class="articlesContainer">
         <div class="articlesCard" th:each="a : ${articles}">
             <div class="articlesCardImage">
@@ -22,9 +23,6 @@
                         <br>
                         <br>
                     </div>
-                    <div class="readMe">
-                        <a th:href="@{/details/{id}(id = ${a.getId()})}">Прочети статията</a>
-                    </div>
                     <div class="infoForUser">
                         <p class="time"><small th:text="${a.getAdded()}"></small></p>
                         <p class="name"><small th:text="${a.getPublished().getUsername()}"></small></p>
@@ -33,10 +31,11 @@
             </div>
         </div>
     </section>
+
+
 </main>
 
 <footer th:replace="fragments/commons::footer"></footer>
-
 </body>
 
 </html>
