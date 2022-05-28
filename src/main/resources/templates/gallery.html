@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main id="container">
+    <section>
+        <form
+                th:action="@{/gallery}"
+                th:method="POST"
+                th:object="${filterBindingModel}">
+            <div>
+                <select
+                        th:field="*{type}"
+                        id="select_type"
+                        onchange="update()">
+                    <option value="0" selected>Всички</option>
+                    <option value="1" >Маникюр</option>
+                    <option value="2" >Прически</option>
+                    <option value="3" >Грим</option>
+                </select>
+                <select
+                        id="select_style"
+                        th:field="*{style}"
+                        disabled>
+                    <option value="0" selected>Всички</option>
+                    <option value="1" >Ежедневен</option>
+                    <option value="2" >Вечерен</option>
+                    <option value="3" >Сватбен</option>
+                    <option value="4" >Абитуриентски</option>
+                </select>
+                <div>
+                    <button type="submit">Търси</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <section>
+        <section class="image-grid">
+            <div class="iframeContainer" th:each="p : ${allPictures}">
+                <img th:src="${p.getUrl()}" class="img-fluid gallery-form-view" alt="images">
+
+            </div>
+        </section>
+    </section>
+</main>
+<script src="/js/gallery.js"></script>
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

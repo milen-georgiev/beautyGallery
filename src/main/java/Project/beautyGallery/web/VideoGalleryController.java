@@ -17,8 +17,8 @@ public class VideoGalleryController {
         this.videoService = videoService;
     }
 
-//    @GetMapping("/gallery/video")
-    @GetMapping("/gallery")
+
+    @GetMapping("/gallery/video")
     public String video(Model model) {
 
         List<VideoViewModel> viewVideo = videoService.viewVideo();

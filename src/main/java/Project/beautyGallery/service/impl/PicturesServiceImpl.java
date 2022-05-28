@@ -2,7 +2,10 @@ package Project.beautyGallery.service.impl;
 
 import Project.beautyGallery.model.entity.CloudinaryImageEntity;
 import Project.beautyGallery.model.entity.PicturesEntity;
+import Project.beautyGallery.model.entity.enums.StyleNameEnum;
+import Project.beautyGallery.model.entity.enums.TypeNameEnum;
 import Project.beautyGallery.model.serviceModel.PicturesServiceModel;
+import Project.beautyGallery.model.viewModel.PicturesViewModel;
 import Project.beautyGallery.repository.PicturesRepository;
 import Project.beautyGallery.repository.UserRepository;
 import Project.beautyGallery.service.CloudinaryService;
@@ -13,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PicturesServiceImpl implements PicturesService {
@@ -44,6 +49,41 @@ public class PicturesServiceImpl implements PicturesService {
                 .setLikes(0);
 
         picturesRepository.save(pictures);
+    }
+
+
+    public List<PicturesViewModel> allPicturesView() {
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findAll();
+
+        return picturesEntityList
+                .stream()
+                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
+                .collect(Collectors.toList());
+
+    }
+
+
+    @Override
+    public List<PicturesViewModel> allPicturesViewType(TypeNameEnum type) {
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryType(type);
+
+        return picturesEntityList
+                .stream()
+                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PicturesViewModel> filterPicturesViewTypeAndStyle(TypeNameEnum type, StyleNameEnum style) {
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryTypeAndCategoryStyle(type, style);
+
+        return picturesEntityList
+                .stream()
+                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
+                .collect(Collectors.toList());
     }
 
     private PicturesEntity createPicturesEntity(MultipartFile file) throws IOException {

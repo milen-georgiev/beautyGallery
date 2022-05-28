@@ -1,9 +1,10 @@
 package Project.beautyGallery.model.viewModel;
 
 import java.time.Instant;
+import java.util.UUID;
 
 public class PicturesViewModel {
-    private Long id;
+    private UUID id;
     private String url;
     private String publicId;
     private Instant added;
@@ -12,12 +13,13 @@ public class PicturesViewModel {
     public PicturesViewModel() {
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public PicturesViewModel setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public String getUrl() {
