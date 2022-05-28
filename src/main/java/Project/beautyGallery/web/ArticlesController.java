@@ -42,16 +42,6 @@ public class ArticlesController {
     @GetMapping("/details/{id}")
     public String detailsArticles(@PathVariable("id") UUID id, Model model) {
 
-//        if (grandmasSecretArticlesService.findArticlesById(id) == null) {
-//            throw new ObjectNotFoundException("Обект с номер " + id + " не е намерен!");
-//        }
-
-//        try {
-//            int idNumber = Integer.parseInt(id.toString());w
-//        } catch (NumberFormatException exception){
-//            throw new NumberFormatException("В номера на обекта " + id + " е намерен текст!");
-//        }
-
         model.addAttribute("articles", articlesService.findArticlesById(id));
 
         return "details";

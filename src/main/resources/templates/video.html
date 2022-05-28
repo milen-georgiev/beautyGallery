@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <section id="container">
+        <section class="image-grid">
+            <div class="iframeContainer" th:each="v : ${viewVideo}">
+                <iframe th:src="'https://www.youtube.com/embed/' + ${v.videoUrl}"></iframe>
+            </div>
+        </section>
+    </section>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>
