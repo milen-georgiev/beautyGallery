@@ -14,7 +14,8 @@ public interface PicturesService {
 
     List<PicturesViewModel> allPicturesView();
 
-    List<PicturesViewModel> allPicturesViewType(TypeNameEnum type);
+    List<PicturesViewModel> filterPicturesView(int type, int style);
 
-    List<PicturesViewModel> filterPicturesViewTypeAndStyle(TypeNameEnum type, StyleNameEnum style);
-}
+
+
+ }

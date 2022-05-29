@@ -63,22 +63,56 @@ public class PicturesServiceImpl implements PicturesService {
 
     }
 
-
     @Override
-    public List<PicturesViewModel> allPicturesViewType(TypeNameEnum type) {
-        List<PicturesEntity> picturesEntityList = picturesRepository
-                .findPicturesEntityByCategoryType(type);
+    public List<PicturesViewModel> filterPicturesView(int type, int style) {
 
-        return picturesEntityList
-                .stream()
-                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
-                .collect(Collectors.toList());
-    }
+        TypeNameEnum typePictures = null;
+        if (type > 0){
+            switch (type){
+                case 1:
+                    typePictures = TypeNameEnum.MANICURE;
+                    break;
+                case 2:
+                    typePictures = TypeNameEnum.HAIRSTYLES;
+                    break;
+                case 3:
+                    typePictures = TypeNameEnum.MAKEUP;
+                    break;
+            }
+        }
+        StyleNameEnum stylePictures = null;
+        if (style > 0) {
+            switch (style){
+                case 1:
+                    stylePictures = StyleNameEnum.DAILY;
+                    break;
+                case 2:
+                    stylePictures = StyleNameEnum.EVENING;
+                    break;
+                case 3:
+                    stylePictures = StyleNameEnum.WEDDING;
+                    break;
+                case 4:
+                    stylePictures = StyleNameEnum.GRADUATION;
+                    break;
+            }
+        }
 
-    @Override
-    public List<PicturesViewModel> filterPicturesViewTypeAndStyle(TypeNameEnum type, StyleNameEnum style) {
-        List<PicturesEntity> picturesEntityList = picturesRepository
-                .findPicturesEntityByCategoryTypeAndCategoryStyle(type, style);
+        List<PicturesEntity> picturesEntityList = null;
+        if (style > 0) {
+            picturesEntityList = picturesRepository
+                    .findPicturesEntityByCategoryTypeAndCategoryStyle(typePictures, stylePictures);
+
+        } else if (type > 0) {
+
+            picturesEntityList = picturesRepository
+                    .findPicturesEntityByCategoryType(typePictures);
+        }
+        else {
+            picturesEntityList = picturesRepository
+                    .findAll();
+
+        }
 
         return picturesEntityList
                 .stream()

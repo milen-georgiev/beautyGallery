@@ -39,55 +39,12 @@ public class GalleryController {
 
     @PostMapping("/gallery")
     public String filterGallery(FilterBindingModel filterBindingModel, Model model) {
-        TypeNameEnum typeNameEnum = null;
-        StyleNameEnum styleNameEnum = null;
 
-        if (filterBindingModel.getType() != 0) {
-            switch (filterBindingModel.getType()) {
-                case 1:
-                    typeNameEnum = TypeNameEnum.MANICURE;
-                    break;
-                case 2:
-                    typeNameEnum = TypeNameEnum.HAIRSTYLES;
-                    break;
-                case 3:
-                    typeNameEnum = TypeNameEnum.MAKEUP;
-                    break;
-            }
-        }
+        List<PicturesViewModel> allPictures = picturesService.filterPicturesView(filterBindingModel.getType(),filterBindingModel.getStyle());
 
-        if (filterBindingModel.getStyle() != 0) {
-            switch (filterBindingModel.getStyle()) {
-                case 1:
-                    styleNameEnum = StyleNameEnum.DAILY;
-                    break;
-                case 2:
-                    styleNameEnum = StyleNameEnum.EVENING;
-                    break;
-                case 3:
-                    styleNameEnum = StyleNameEnum.WEDDING;
-                    break;
-                case 4:
-                    styleNameEnum = StyleNameEnum.GRADUATION;
-                    break;
-            }
-        }
+        model.addAttribute("allPictures", allPictures);
 
-        if (styleNameEnum != null) {
-            List<PicturesViewModel> allPictures = picturesService.filterPicturesViewTypeAndStyle(typeNameEnum, styleNameEnum);
-            model.addAttribute("allPictures", allPictures);
-        } else if (typeNameEnum != null) {
-            List<PicturesViewModel> allPictures = picturesService.allPicturesViewType(typeNameEnum);
-            model.addAttribute("allPictures", allPictures);
-        }
-//        else {
-//            List<PicturesViewModel> allPictures = picturesService.allPicturesView();
-//        model.addAttribute("allPictures", allPictures);
-//        return "redirect:gallery";
-//        }
-
-
-        return "redirect:gallery";
+        return "gallery";
     }
 
     @ModelAttribute("filterBindingModel")
