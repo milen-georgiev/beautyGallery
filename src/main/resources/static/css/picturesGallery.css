@@ -32,7 +32,7 @@
 }
 .gallery-card {
     padding: 15px;
-    align-content: space-evenly;
+    align-content: center;
 }
 
 .gallery-card-element {

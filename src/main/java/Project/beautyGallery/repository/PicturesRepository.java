@@ -15,4 +15,6 @@ public interface PicturesRepository extends JpaRepository<PicturesEntity, UUID> 
     List<PicturesEntity> findPicturesEntityByCategoryType(TypeNameEnum type);
 
     List<PicturesEntity> findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum type, StyleNameEnum style);
+
+    void  deleteAllByPublicId(String publicId);
 }

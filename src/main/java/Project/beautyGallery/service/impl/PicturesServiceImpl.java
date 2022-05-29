@@ -122,6 +122,12 @@ public class PicturesServiceImpl implements PicturesService {
                 .collect(Collectors.toList());
     }
 
+    // delete pictures ---------------------------
+    @Override
+    public void deletePictures(String publicId) {
+        picturesRepository.deleteAllByPublicId(publicId);
+    }
+
     // create pictures ---------------------------
     private PicturesEntity createPicturesEntity(MultipartFile file) throws IOException {
         final CloudinaryImageEntity uploaded = this.cloudinaryService.upload(file);

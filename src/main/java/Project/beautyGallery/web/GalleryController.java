@@ -9,10 +9,9 @@ import Project.beautyGallery.service.CloudinaryService;
 import Project.beautyGallery.service.PicturesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -42,6 +41,16 @@ public class GalleryController {
         model.addAttribute("allPictures", allPictures);
 
         return "gallery";
+    }
+
+    @Transactional
+    @DeleteMapping("/gallery/delete")
+    public String delete(@RequestParam("public_id") String publicId) {
+        if (cloudinaryService.delete(publicId)) {
+            picturesService.deletePictures(publicId);
+        }
+
+        return "redirect:/gallery";
     }
 
     @ModelAttribute("filterBindingModel")

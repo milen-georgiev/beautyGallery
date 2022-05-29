@@ -14,6 +14,8 @@ public interface PicturesService {
 
     List<PicturesViewModel> filterPicturesView(int type, int style);
 
+    void deletePictures(String publicId);
+
 
 
  }
