@@ -51,7 +51,8 @@ public class PicturesServiceImpl implements PicturesService {
         picturesRepository.save(pictures);
     }
 
-
+    // Pictures View  ----------------------------
+    // all pictures ------------------------------
     public List<PicturesViewModel> allPicturesView() {
         List<PicturesEntity> picturesEntityList = picturesRepository
                 .findAll();
@@ -63,6 +64,7 @@ public class PicturesServiceImpl implements PicturesService {
 
     }
 
+    // filter pictures ---------------------------
     @Override
     public List<PicturesViewModel> filterPicturesView(int type, int style) {
 
@@ -120,6 +122,7 @@ public class PicturesServiceImpl implements PicturesService {
                 .collect(Collectors.toList());
     }
 
+    // create pictures ---------------------------
     private PicturesEntity createPicturesEntity(MultipartFile file) throws IOException {
         final CloudinaryImageEntity uploaded = this.cloudinaryService.upload(file);
 

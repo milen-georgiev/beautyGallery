@@ -6,7 +6,8 @@
 @import "./upload.css";
 @import "./about.css";
 @import "./articles.css";
-@import "./gallery.css";
+@import "./videoGallery.css";
+@import "./picturesGallery.css";
 
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
@@ -29,7 +30,6 @@ textarea {
     display: block;
     width: 100%;
     padding: 0;
-    margin-top: 10px;
     border: none;
     outline: none;
     box-sizing: border-box;
@@ -39,5 +39,9 @@ textarea {
     margin-top: 25px;
     padding: 15px;
     width: 100%;
+}
+
+hr.solid {
+    margin-top: 10px;
 }
 

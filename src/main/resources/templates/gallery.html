@@ -14,38 +14,73 @@
                 th:action="@{/gallery}"
                 th:method="POST"
                 th:object="${filterBindingModel}">
-            <div>
-                <select
+            <div class="filterGalleryContainer">
+                <select class="filterElement"
                         th:field="*{type}"
                         id="select_type"
                         onchange="update()">
                     <option value="0" selected>Всички</option>
-                    <option value="1" >Маникюр</option>
-                    <option value="2" >Прически</option>
-                    <option value="3" >Грим</option>
+                    <option value="1">Маникюр</option>
+                    <option value="2">Прически</option>
+                    <option value="3">Грим</option>
                 </select>
-                <select
+                <select class="filterElement"
                         id="select_style"
                         th:field="*{style}"
                         disabled>
                     <option value="0" selected>Всички</option>
-                    <option value="1" >Ежедневен</option>
-                    <option value="2" >Вечерен</option>
-                    <option value="3" >Сватбен</option>
-                    <option value="4" >Абитуриентски</option>
+                    <option value="1">Ежедневен</option>
+                    <option value="2">Вечерен</option>
+                    <option value="3">Сватбен</option>
+                    <option value="4">Абитуриентски</option>
                 </select>
-                <div>
-                    <button type="submit">Търси</button>
-                </div>
+                <button class="filterElement" type="submit">Търси</button>
             </div>
         </form>
     </section>
+    <hr class="solid">
     <section>
-        <section class="image-grid">
-            <div class="iframeContainer" th:each="p : ${allPictures}">
-                <img th:src="${p.getUrl()}" class="img-fluid gallery-form-view" alt="images">
-
-            </div>
+        <section class="imageGallery">
+            <article class="gallery-card" th:each="p : ${allPictures}">
+                <img th:src="${p.getUrl()}" alt="images">
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <div class="gallery-card-element">
+                            <div>
+                                <form th:action="@{/gallery/delete}"
+                                      th:method="DELETE">
+                                    <input type="hidden" name="public_id" th:value="${p.getPublicId()}">
+                                    <button type="submit" class="element-view-btn">Изтрий</button>
+                                </form>
+                            </div>
+                            <div>
+                                <button class="element-view-btn">
+                                <a  th:href="${p.getUrl()}">Детайлс</a>
+                                </button>
+                            </div>
+                            <div>
+                                <form th:action="@{/gallery/likes}"
+                                      th:method="PUT">
+                                    <input type="hidden" name="likes" th:value="${p.getId()}">
+                                    <button class="element-view-like" type="submit"><i class="fa fa-heart"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div>
+                                <p th:text="${p.getLikes()}" class="element-view-like"></p>
+                            </div>
+                        </div>
+                    </th:block>
+                    <th:block sec:authorize="!hasRole('ADMIN')">
+                        <a th:href="${p.getUrl()}">Детайлс</a>
+                        <form th:action="@{/gallery/likes}"
+                              th:method="PUT">
+                            <input type="hidden" name="likes" th:value="${p.getId()}">
+                            <button type="submit"><i class="fa fa-heart"></i>
+                            </button>
+                        </form>
+                        <p th:text="${p.getLikes()}" class="like-view"></p>
+                    </th:block>
+            </article>
         </section>
     </section>
 </main>
