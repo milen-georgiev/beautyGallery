@@ -10,13 +10,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/users")
@@ -48,7 +47,6 @@ public class UserController {
             RedirectAttributes redirectAttributes) {
 
 
-
         if (!userService.isUserNameFree(userRegistrationBindingModel.getUsername())) {
             redirectAttributes
                     .addFlashAttribute("isBusy", false)
@@ -77,7 +75,7 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    private String profile(Model model, @AuthenticationPrincipal BeautyGalleryUsers user) {
+    public String profile(Model model, @AuthenticationPrincipal BeautyGalleryUsers user) {
 
         UserViewModel userViewModel = userService.userDetails(user.getUserIdentified());
 
@@ -85,6 +83,15 @@ public class UserController {
 
         return "profile";
     }
+
+    @Transactional
+    @DeleteMapping("/delete")
+    public String deleteUser(@RequestParam("id") UUID id) {
+
+        userService.deleteUser(id);
+        return "index";
+    }
+
 
     @ModelAttribute("userRegistrationBindingModel")
     public UserRegistrationBindingModel userModel() {

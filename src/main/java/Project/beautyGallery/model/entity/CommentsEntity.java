@@ -1,8 +1,6 @@
 package Project.beautyGallery.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -14,7 +12,7 @@ public class CommentsEntity extends BaseEntity {
     @Size(min = 5)
     @NotNull
     private String message;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
     private UserEntity user;
     @ManyToOne
     private ArticlesEntity articles;

@@ -1,9 +1,6 @@
 package Project.beautyGallery.web;
 
 import Project.beautyGallery.model.binding.FilterBindingModel;
-import Project.beautyGallery.model.binding.UserRegistrationBindingModel;
-import Project.beautyGallery.model.entity.enums.StyleNameEnum;
-import Project.beautyGallery.model.entity.enums.TypeNameEnum;
 import Project.beautyGallery.model.viewModel.PicturesViewModel;
 import Project.beautyGallery.service.CloudinaryService;
 import Project.beautyGallery.service.PicturesService;

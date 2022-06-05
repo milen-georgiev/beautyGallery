@@ -19,7 +19,7 @@ public class ArticlesEntity extends BaseEntity{
     private String description;
     @Enumerated(EnumType.STRING)
     private ArticlesNameEnum category;
-    @OneToMany(mappedBy = "articles", fetch = FetchType.LAZY)
+    @OneToMany
     private List<CommentsEntity> comments = new ArrayList<>();
     @ManyToOne
     private UserEntity published;

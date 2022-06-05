@@ -20,20 +20,20 @@
                 <div class="btnForm">
                     <div class="formLogout">
                         <form th:action="@{/users/logout}" th:method="POST">
-                            <button class="btnLogout" type="submit" value="Logout">Изход</button>
+                            <button class="btnLogout" type="submit">Изход</button>
                         </form>
                     </div>
-<!--                    ToDo-->
-<!--                    <div class="formEdit">-->
-<!--                        <form th:action="@{/users/logout}" th:method="POST">-->
-<!--                            <button class="btnEdit" type="submit" value="Logout">Редактирай</button>-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                    <div class="formDelete">-->
-<!--                        <form th:action="@{/users/logout}" th:method="POST">-->
-<!--                            <button class="btnDelete" type="submit" value="Logout">Изтриване</button>-->
-<!--                        </form>-->
-<!--                    </div>-->
+                    <div class="formEdit">
+                        <form th:action="@{/users/edit}" th:method="PUT">
+                            <button class="btnEdit" type="submit">Редактирай</button>
+                        </form>
+                    </div>
+                    <div class="formDelete">
+                        <form th:action="@{/users/delete}" th:method="DELETE">
+                            <input type="hidden" name="id" th:value="${userViewModel.getId()}">
+                            <button id="deleteUser" class="btnDelete" type="submit">Изтриване</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -68,7 +68,7 @@
     </div>
 </main>
 
-
+<script src="/js/profile.js"></script>
 <footer th:replace="fragments/commons::footer"></footer>
 
 </body>

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,8 @@ public class UserEntity extends BaseEntity{
     private LocalDate created;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRoleEntity> roles = new HashSet<>();
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<PicturesEntity> myPictures;
 
     public UserEntity() {
     }
@@ -109,6 +112,15 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setRoles(Set<UserRoleEntity> roles) {
         this.roles = roles;
+        return this;
+    }
+
+    public List<PicturesEntity> getMyPictures() {
+        return myPictures;
+    }
+
+    public UserEntity setMyPictures(List<PicturesEntity> myPictures) {
+        this.myPictures = myPictures;
         return this;
     }
 }

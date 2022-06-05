@@ -16,7 +16,7 @@ public class PicturesEntity extends BaseEntity{
     private TypeNameEnum categoryType;
     @Enumerated(EnumType.STRING)
     private StyleNameEnum categoryStyle;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity user;
     private String publicId;
     private String publicationStatus;

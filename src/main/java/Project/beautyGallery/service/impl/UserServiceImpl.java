@@ -18,7 +18,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -89,6 +91,11 @@ public class UserServiceImpl implements UserService {
         UserViewModel userViewModel = modelMapper.map(userEntity, UserViewModel.class);
 
         return userViewModel;
+    }
+
+    @Override
+    public void deleteUser(UUID id) {
+        userRepository.deleteUserEntitiesById(id);
     }
 
     public void initializeUsers() {

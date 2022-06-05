@@ -1,9 +1,6 @@
 package Project.beautyGallery.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +11,7 @@ public class VideoEntity extends BaseEntity{
     private String videoUrl;
     private String publicationStatus;
     private LocalDate added;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private UserEntity user;
 
     public VideoEntity() {
