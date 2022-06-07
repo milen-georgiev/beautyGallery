@@ -31,6 +31,8 @@ public class UserEntity extends BaseEntity{
     private Set<UserRoleEntity> roles = new HashSet<>();
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<PicturesEntity> myPictures;
+    @OneToMany(mappedBy = "published",cascade = CascadeType.ALL)
+    private List<ArticlesEntity> myArticles;
 
     public UserEntity() {
     }

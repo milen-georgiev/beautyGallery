@@ -6,17 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.web.util.UrlPathHelper;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Configuration
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -48,17 +40,8 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .failureForwardUrl("/users/login-error")
                 .and()
                 .logout()
-                .logoutSuccessHandler(new LogoutSuccessHandler() {
-                    @Override
-                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
-                                                Authentication authentication)
-                            throws IOException, ServletException {
-                        UrlPathHelper helper = new UrlPathHelper();
-                        String context = helper.getContextPath(request);
-
-                        response.sendRedirect(context + "/login");
-                    }
-                })
+                .logoutUrl("/users/logout")
+                .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
 
@@ -70,4 +53,5 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
     }
+
 }

@@ -21,7 +21,7 @@ public class ArticlesEntity extends BaseEntity{
     private ArticlesNameEnum category;
     @OneToMany
     private List<CommentsEntity> comments = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private UserEntity published;
     private String url;
     private String publicId;
@@ -67,6 +67,15 @@ public class ArticlesEntity extends BaseEntity{
         return this;
     }
 
+    public UserEntity getPublished() {
+        return published;
+    }
+
+    public ArticlesEntity setPublished(UserEntity published) {
+        this.published = published;
+        return this;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -85,12 +94,12 @@ public class ArticlesEntity extends BaseEntity{
         return this;
     }
 
-    public UserEntity getPublished() {
-        return published;
+    public LocalDate getAdded() {
+        return added;
     }
 
-    public ArticlesEntity setPublished(UserEntity published) {
-        this.published = published;
+    public ArticlesEntity setAdded(LocalDate added) {
+        this.added = added;
         return this;
     }
 
@@ -100,15 +109,6 @@ public class ArticlesEntity extends BaseEntity{
 
     public ArticlesEntity setStatus(String status) {
         this.status = status;
-        return this;
-    }
-
-    public LocalDate getAdded() {
-        return added;
-    }
-
-    public ArticlesEntity setAdded(LocalDate added) {
-        this.added = added;
         return this;
     }
 }
