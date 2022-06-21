@@ -2,6 +2,7 @@ package Project.beautyGallery.model.serviceModel;
 
 public class VideoServiceModel {
 
+
     private String videoUrl;
 
     public VideoServiceModel() {

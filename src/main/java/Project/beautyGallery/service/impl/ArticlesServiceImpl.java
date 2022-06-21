@@ -2,6 +2,7 @@ package Project.beautyGallery.service.impl;
 
 import Project.beautyGallery.model.entity.ArticlesEntity;
 import Project.beautyGallery.model.entity.CloudinaryImageEntity;
+import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.serviceModel.ArticlesServiceModel;
 import Project.beautyGallery.model.viewModel.ArticlesViewModel;
 import Project.beautyGallery.repository.ArticlesRepository;
@@ -77,5 +78,18 @@ public class ArticlesServiceImpl implements ArticlesService {
                 .findById(id)
                 .map(articlesEntity -> modelMapper.map(articlesEntity, ArticlesViewModel.class))
                 .orElse(null);
+    }
+
+    @Override
+    public List<ArticlesViewModel> onlyArticlesUser(String username) {
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<ArticlesEntity> articlesEntities = articlesRepository
+                .findArticlesEntityByPublished(user);
+
+        return articlesEntities
+                .stream()
+                .map(articlesEntity -> modelMapper.map(articlesEntity, ArticlesViewModel.class))
+                .collect(Collectors.toList());
     }
 }

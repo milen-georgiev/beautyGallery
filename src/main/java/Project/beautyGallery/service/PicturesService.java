@@ -16,6 +16,6 @@ public interface PicturesService {
 
     void deletePictures(String publicId);
 
-
+    List<PicturesViewModel> onlyPicturesOfUser(String username);
 
  }

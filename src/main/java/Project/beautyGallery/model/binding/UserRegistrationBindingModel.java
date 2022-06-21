@@ -9,10 +9,6 @@ public class UserRegistrationBindingModel {
     @NotNull
     private String username;
     @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
-    @NotNull
     private Integer age;
     @Email
     private String email;
@@ -37,30 +33,12 @@ public class UserRegistrationBindingModel {
         return this;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserRegistrationBindingModel setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
     public String getTown() {
         return town;
     }
 
     public void setTown(String town) {
         this.town = town;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserRegistrationBindingModel setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
     }
 
     public Integer getAge() {

@@ -2,8 +2,14 @@ package Project.beautyGallery.web;
 
 import Project.beautyGallery.model.binding.UserRegistrationBindingModel;
 import Project.beautyGallery.model.serviceModel.UserRegistrationServiceModel;
+import Project.beautyGallery.model.viewModel.ArticlesViewModel;
+import Project.beautyGallery.model.viewModel.PicturesViewModel;
 import Project.beautyGallery.model.viewModel.UserViewModel;
+import Project.beautyGallery.model.viewModel.VideoViewModel;
+import Project.beautyGallery.service.ArticlesService;
+import Project.beautyGallery.service.PicturesService;
 import Project.beautyGallery.service.UserService;
+import Project.beautyGallery.service.VideoService;
 import Project.beautyGallery.service.impl.BeautyGalleryUsers;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,11 +20,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -26,10 +31,18 @@ import java.util.UUID;
 public class UserController {
 
     private final UserService userService;
+    private final PicturesService picturesService;
+    private final VideoService videoService;
+    private final ArticlesService articlesService;
     private final ModelMapper modelMapper;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, PicturesService picturesService,
+                          VideoService videoService, ArticlesService articlesService,
+                          ModelMapper modelMapper) {
         this.userService = userService;
+        this.picturesService = picturesService;
+        this.videoService = videoService;
+        this.articlesService = articlesService;
         this.modelMapper = modelMapper;
     }
 
@@ -82,8 +95,14 @@ public class UserController {
     public String profile(Model model, @AuthenticationPrincipal BeautyGalleryUsers user) {
 
         UserViewModel userViewModel = userService.userDetails(user.getUserIdentified());
+        List<PicturesViewModel> userPictures = picturesService.onlyPicturesOfUser(user.getUsername());
+        List<ArticlesViewModel> userArticles = articlesService.onlyArticlesUser(user.getUsername());
+        List<VideoViewModel> userVideo = videoService.onlyVideoUser(user.getUsername());
 
         model.addAttribute("userViewModel", userViewModel);
+        model.addAttribute("userPictures", userPictures);
+        model.addAttribute("userArticles", userArticles);
+        model.addAttribute("userVideo", userVideo);
 
         return "profile";
     }

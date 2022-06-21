@@ -13,10 +13,6 @@ public class UserEntity extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String username;
-    @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
@@ -33,6 +29,8 @@ public class UserEntity extends BaseEntity{
     private List<PicturesEntity> myPictures;
     @OneToMany(mappedBy = "published",cascade = CascadeType.ALL)
     private List<ArticlesEntity> myArticles;
+    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL)
+    private List<VideoEntity> myVideo;
 
     public UserEntity() {
     }
@@ -43,24 +41,6 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setUsername(String username) {
         this.username = username;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserEntity setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserEntity setLastName(String lastName) {
-        this.lastName = lastName;
         return this;
     }
 
@@ -123,6 +103,24 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setMyPictures(List<PicturesEntity> myPictures) {
         this.myPictures = myPictures;
+        return this;
+    }
+
+    public List<ArticlesEntity> getMyArticles() {
+        return myArticles;
+    }
+
+    public UserEntity setMyArticles(List<ArticlesEntity> myArticles) {
+        this.myArticles = myArticles;
+        return this;
+    }
+
+    public List<VideoEntity> getMyVideo() {
+        return myVideo;
+    }
+
+    public UserEntity setMyVideo(List<VideoEntity> myVideo) {
+        this.myVideo = myVideo;
         return this;
     }
 }

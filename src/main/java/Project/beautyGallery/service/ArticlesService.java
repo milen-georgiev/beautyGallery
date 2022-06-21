@@ -15,4 +15,6 @@ public interface ArticlesService {
 
     ArticlesViewModel findArticlesById(UUID id);
 
+    List<ArticlesViewModel> onlyArticlesUser(String username);
+
 }

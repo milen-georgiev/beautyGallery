@@ -4,6 +4,7 @@ import Project.beautyGallery.model.entity.UserRoleEntity;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -11,8 +12,6 @@ public class UserViewModel {
 
     private UUID id;
     private String username;
-    private String firstName;
-    private String lastName;
     private Integer age;
     private String email;
     private String town;
@@ -44,24 +43,6 @@ public class UserViewModel {
 
     public UserViewModel setUsername(String username) {
         this.username = username;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserViewModel setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserViewModel setLastName(String lastName) {
-        this.lastName = lastName;
         return this;
     }
 

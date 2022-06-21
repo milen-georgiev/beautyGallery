@@ -27,29 +27,7 @@
                 placeholder="Потребителско име"
                 value="">
       </div>
-      <div>
-        <label for="firstName">Име :</label>
-        <input  th:field="*{firstName}"
-                minlength="5"
-                maxlength="20"
-                id="firstName"
-                name="firstName"
-                type="text"
-                placeholder="Име"
-                value="">
-      </div>
 
-      <div>
-        <label for="lastName">Фамилия :</label>
-        <input  th:field="*{lastName}"
-                minlength="5"
-                maxlength="20"
-                id="lastName"
-                name="lastName"
-                type="text"
-                placeholder="Фамилия"
-                value="">
-      </div>
 
       <div>
         <label for="age">Години :</label>
@@ -59,6 +37,18 @@
                 min="12"
                 type="number"
                 placeholder="Възраст"
+                value="">
+      </div>
+
+      <div>
+        <label for="town">Град :</label>
+        <input  th:field="*{town}"
+                minlength="5"
+                maxlength="20"
+                id="town"
+                name="town"
+                type="text"
+                placeholder="София"
                 value="">
       </div>
     </div>
@@ -72,18 +62,6 @@
                 name="email"
                 type="text"
                 placeholder="name@mail.com"
-                value="">
-      </div>
-
-      <div>
-        <label for="town">Град :</label>
-        <input  th:field="*{town}"
-                minlength="5"
-                maxlength="20"
-                id="town"
-                name="town"
-                type="text"
-                placeholder="София"
                 value="">
       </div>
 

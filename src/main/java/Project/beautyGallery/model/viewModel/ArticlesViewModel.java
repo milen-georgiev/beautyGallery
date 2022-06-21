@@ -14,7 +14,6 @@ public class ArticlesViewModel {
     private String name;
     private String description;
     private ArticlesNameEnum category;
-    private List<CommentsEntity> comments = new ArrayList<>();
     private UserEntity published;
     private String url;
     private String publicId;
@@ -56,15 +55,6 @@ public class ArticlesViewModel {
 
     public ArticlesViewModel setCategory(ArticlesNameEnum category) {
         this.category = category;
-        return this;
-    }
-
-    public List<CommentsEntity> getComments() {
-        return comments;
-    }
-
-    public ArticlesViewModel setComments(List<CommentsEntity> comments) {
-        this.comments = comments;
         return this;
     }
 

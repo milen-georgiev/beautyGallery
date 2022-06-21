@@ -11,4 +11,6 @@ public interface VideoService {
 
     List<VideoViewModel> viewVideo();
 
+    List<VideoViewModel> onlyVideoUser(String username);
+
 }

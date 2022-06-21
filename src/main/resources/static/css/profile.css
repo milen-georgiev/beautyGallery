@@ -7,6 +7,10 @@
                         "userPictures userArticles";
     }
 
+    .userDetails {
+        grid-template: "partOne partTwo";
+    }
+
 }
 
 @media only screen and (max-width: 919px) {
@@ -18,7 +22,21 @@
                         "userVideo"
                         "userPictures";
     }
+    .userDetails {
+        grid-template: "partOne"
+                        "partTwo";
+    }
 
+}
+
+.partOne {
+    padding: 15px;
+    grid-area: partOne;
+}
+
+.partTwo {
+    padding: 15px;
+    grid-area: partTwo;
 }
 
 .welcomeMessage {

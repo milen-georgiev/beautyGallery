@@ -1,5 +1,6 @@
 package Project.beautyGallery.service.impl;
 
+import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.entity.VideoEntity;
 import Project.beautyGallery.model.serviceModel.VideoServiceModel;
 import Project.beautyGallery.model.viewModel.VideoViewModel;
@@ -36,7 +37,7 @@ public class VideoServiceImpl implements VideoService {
                 .setVideoUrl(videoServiceModel.getVideoUrl())
                 .setPublicationStatus("unverified")
                 .setAdded(LocalDate.now())
-                .setUser(userRepository.findByUsername(username).orElseThrow());
+                .setUserId(userRepository.findByUsername(username).orElseThrow());
 
         videoRepository.save(videoEntity);
 
@@ -48,7 +49,19 @@ public class VideoServiceImpl implements VideoService {
 
         return allVideo
                 .stream()
-                .map(videoEntity -> modelMapper.map(videoEntity,VideoViewModel.class))
+                .map(videoEntity -> modelMapper.map(videoEntity, VideoViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VideoViewModel> onlyVideoUser(String username) {
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<VideoEntity> videoEntity = videoRepository.findVideoEntityByUserId(user);
+
+        return videoEntity
+                .stream()
+                .map(videoEntity1 -> modelMapper.map(videoEntity, VideoViewModel.class))
                 .collect(Collectors.toList());
     }
 }

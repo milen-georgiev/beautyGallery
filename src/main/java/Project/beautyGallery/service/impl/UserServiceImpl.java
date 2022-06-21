@@ -62,8 +62,6 @@ public class UserServiceImpl implements UserService {
 
         newUser
                 .setUsername(userRegistrationServiceModel.getUsername())
-                .setFirstName(userRegistrationServiceModel.getFirstName())
-                .setLastName(userRegistrationServiceModel.getLastName())
                 .setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()))
                 .setEmail(userRegistrationServiceModel.getEmail())
                 .setAge(userRegistrationServiceModel.getAge())
@@ -108,8 +106,6 @@ public class UserServiceImpl implements UserService {
                     .setUsername("admin")
                     .setAge(20)
                     .setEmail("admin@Adminov.com")
-                    .setFirstName("Admin")
-                    .setLastName("Adminov")
                     .setCreated(LocalDate.now())
                     .setPassword(passwordEncoder.encode("test"))
                     .setTown("test");
@@ -122,8 +118,6 @@ public class UserServiceImpl implements UserService {
                     .setUsername("Ivan")
                     .setAge(20)
                     .setEmail("Ivan@Ivanow.com")
-                    .setFirstName("Ivan")
-                    .setLastName("Ivanov")
                     .setCreated(LocalDate.now())
                     .setPassword(passwordEncoder.encode("test"))
                     .setTown("test");

@@ -1,6 +1,7 @@
 package Project.beautyGallery.repository;
 
 import Project.beautyGallery.model.entity.PicturesEntity;
+import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.entity.enums.StyleNameEnum;
 import Project.beautyGallery.model.entity.enums.TypeNameEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,8 @@ public interface PicturesRepository extends JpaRepository<PicturesEntity, UUID> 
     List<PicturesEntity> findPicturesEntityByCategoryType(TypeNameEnum type);
 
     List<PicturesEntity> findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum type, StyleNameEnum style);
+
+    List<PicturesEntity> findPicturesEntityByUser(UserEntity userEntity);
 
     void  deleteAllByPublicId(String publicId);
 }

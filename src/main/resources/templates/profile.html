@@ -38,18 +38,32 @@
             </div>
         </section>
         <section class="userDetails">
-            <div>
-                <p>Име :
-                    <th:block th:text="${userViewModel.getFirstName()}"></th:block>
+            <div class="partOne">
+                <p>Ти си :
+                    <th:block th:text="${userViewModel.getUsername()}"></th:block>
                 </p>
-                <p>Фамилия:
-                    <th:block th:text="${userViewModel.getLastName()}"></th:block>
-                </p>
-                <p>Години :
+                <p>Години:
                     <th:block th:text="${userViewModel.getAge()}"></th:block>
+                </p>
+                <p>Ти си от :
+                    <th:block th:text="${userViewModel.getTown()}"></th:block>
                 </p>
                 <p>E-mail:
                     <th:block th:text="${userViewModel.getEmail()}"></th:block>
+                </p>
+            </div>
+            <div class="partTwo">
+                <p>Побликувани снимки:
+                    <th:block th:text="${userPictures.size()}"></th:block>
+                </p>
+                <p>Побликувани статии:
+                    <th:block th:text="${userArticles.size()}"></th:block>
+                </p>
+                <p>Качени видеа :
+                    <th:block th:text="${userVideo.size()}"></th:block>
+                </p>
+                <p>Профила е създаден:
+                    <th:block th:text="${userViewModel.getCreated()}"></th:block>
                 </p>
             </div>
         </section>

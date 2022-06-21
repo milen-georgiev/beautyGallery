@@ -11,8 +11,8 @@ public class VideoEntity extends BaseEntity{
     private String videoUrl;
     private String publicationStatus;
     private LocalDate added;
-    @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-    private UserEntity user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserEntity userId;
 
     public VideoEntity() {
     }
@@ -35,12 +35,12 @@ public class VideoEntity extends BaseEntity{
         return this;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public UserEntity getUserId() {
+        return userId;
     }
 
-    public VideoEntity setUser(UserEntity user) {
-        this.user = user;
+    public VideoEntity setUserId(UserEntity userId) {
+        this.userId = userId;
         return this;
     }
 

@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface VideoRepository extends JpaRepository<VideoEntity, UUID> {
 
-    List<VideoEntity> findVideoEntityByUser(UserEntity user);
+    List<VideoEntity> findVideoEntityByUserId(UserEntity user);
 
 }

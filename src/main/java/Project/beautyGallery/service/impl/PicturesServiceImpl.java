@@ -2,6 +2,7 @@ package Project.beautyGallery.service.impl;
 
 import Project.beautyGallery.model.entity.CloudinaryImageEntity;
 import Project.beautyGallery.model.entity.PicturesEntity;
+import Project.beautyGallery.model.entity.UserEntity;
 import Project.beautyGallery.model.entity.enums.StyleNameEnum;
 import Project.beautyGallery.model.entity.enums.TypeNameEnum;
 import Project.beautyGallery.model.serviceModel.PicturesServiceModel;
@@ -126,6 +127,19 @@ public class PicturesServiceImpl implements PicturesService {
     @Override
     public void deletePictures(String publicId) {
         picturesRepository.deleteAllByPublicId(publicId);
+    }
+
+    @Override
+    public List<PicturesViewModel> onlyPicturesOfUser(String username) {
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByUser(user);
+
+        return picturesEntityList
+                .stream()
+                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
+                .collect(Collectors.toList());
     }
 
     // create pictures ---------------------------
